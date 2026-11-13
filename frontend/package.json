@@ -1,0 +1,27 @@
+{
+  "name": "celebhair-frontend",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c magenta,cyan \"npm:api\" \"npm:web\"",
+    "web": "vite",
+    "api": "PHP_CLI_SERVER_WORKERS=4 php -d upload_max_filesize=12M -d post_max_size=26M -d max_execution_time=240 -d memory_limit=256M -S 127.0.0.1:8000 -t ../backend/public ../backend/public/index.php",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "serve": "npm run build && npm run api"
+  },
+  "description": "CelebHair virtual hairstyle try-on",
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "concurrently": "^9.2.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8"
+  },
+  "private": true,
+  "type": "module"
+}
